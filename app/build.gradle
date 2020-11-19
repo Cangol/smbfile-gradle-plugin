@@ -3,14 +3,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'mobi.cangol.plugin.smbfile'
 
 smbfile{
-    url '\\192.168.1.1\\APP'
+    url '//192.168.1.1/APP'
     domain ''
     username 'username'
     password 'password'
-    debugDir '\\debug'
-    releaseDir '\\release'
+    debugDir '/debug'
+    releaseDir '/release'
 }
-
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"

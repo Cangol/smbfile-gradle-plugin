@@ -23,23 +23,22 @@ class UploadClient {
     }
 
     String upload(String destDir, String destFileName, String srcFilePath) {
-        boolean isWindows = System.getProperties().getProperty("os.name").toUpperCase().indexOf("WINDOWS") != -1
-        log.error("os.name="+System.getProperties().getProperty("os.name"))
         File srcFile=new File(srcFilePath)
         String filePath=extension.url+destDir+"/" + destFileName
         NtlmPasswordAuthentication authentication=new NtlmPasswordAuthentication(extension.domain,extension.username,extension.password)
-        SmbFile destFile = new SmbFile((isWindows?"file:":"smb:")+ filePath, authentication)
-        SmbFile dir=new SmbFile((isWindows?"file:":"smb:") + filePath.substring(0,filePath.lastIndexOf("/")),authentication)
+        SmbFile destFile = new SmbFile("smb:"+ filePath, authentication)
+        SmbFile dir=new SmbFile("smb:" + filePath.substring(0,filePath.lastIndexOf("/")),authentication)
         BufferedInputStream bin=null
         BufferedOutputStream out=null
-        log.error(destFile.path)
+        log.error("dir="+dir.path)
+        log.error("destFile="+destFile.path)
         try{
             if (!dir.exists())
                 dir.mkdirs()
-            if (destFile.exists())
-                destFile.delete()
-            else
-                destFile.createNewFile()
+//            if (destFile.exists())
+//                destFile.delete()
+//            else
+//                destFile.createNewFile()
             bin = new BufferedInputStream(new FileInputStream(srcFile))
             out = new BufferedOutputStream(new SmbFileOutputStream(destFile))
             byte[] bytes = new byte[4096]
