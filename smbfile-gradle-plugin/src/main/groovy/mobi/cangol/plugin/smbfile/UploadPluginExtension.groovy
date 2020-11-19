@@ -12,4 +12,5 @@ class UploadPluginExtension {
     String pushDir
     String trialDir
     String testDir
+    String flag
 }
