@@ -3,12 +3,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'mobi.cangol.plugin.smbfile'
 
 uploadSmbFile{
-    url '\\192.168.59.1\\研发中心\\方德事业部\\APP'
+    url '\\192.168.1.1\\APP'
     domain ''
-    username 'xuewu.wei'
-    password 'Aa111111'
-    debugDir '\\方德港美股\\测试环境\\android'
-    releaseDir '\\方德港美股\\正式环境\\android'
+    username 'username'
+    password 'password'
+    debugDir '\\debug'
+    releaseDir '\\release'
 }
 
 android {
