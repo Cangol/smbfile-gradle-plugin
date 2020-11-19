@@ -25,7 +25,7 @@ Usage
             releaseDir '替换为你的 smb共享的 release目录' //如:/app/Release/
         }
 
-         './gradlew uploadSmbFileApkDebug
+         './gradlew uploadApkDebug
 
 License
 -----------
