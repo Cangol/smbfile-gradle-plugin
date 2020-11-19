@@ -13,15 +13,15 @@ class UploadPlugin implements Plugin<Project> {
         if (!hasAppPlugin) {
             throw new IllegalStateException("The 'com.android.application' plugin is required.")
         }
-        def extension = project.extensions.create('uploadSmbFile', UploadPluginExtension)
+        def extension = project.extensions.create('smbfile', UploadPluginExtension)
 
         project.android.applicationVariants.all { variant ->
             if (extension == null) {
-                log.error("Please config your uploadSmbFile(smb,username,password) in your build.gradle.")
+                log.error("Please config your smbfile(smb,username,password) in your build.gradle.")
                 return
             }
             if (extension.url==null&&(extension.username==null&&extension.password==null)) {
-                log.error("Please config your uploadSmbFile(smb,username,password) in your build.gradle.")
+                log.error("Please config your smbfile(smb,username,password) in your build.gradle.")
                 return
             }
 
@@ -34,7 +34,7 @@ class UploadPlugin implements Plugin<Project> {
             def productFlavorName = productFlavorNames.join('')
             def variationName = "${productFlavorName}${buildTypeName}"
             def uploadApkTaskName = "uploadApk${variationName}"
-            def assembleTask = extension.dependsOn != null ? extension.dependsOn : variant.assemble
+            def assembleTask = extension.dependsOn != null ? "${seaExtension.dependsOn}${variationName}" : variant.assemble
             log.info("uploadApkTaskName == " + uploadApkTaskName)
             def uploadApkTask = project.tasks.create(uploadApkTaskName, UploadTask)
             uploadApkTask.extension = extension

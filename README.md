@@ -16,7 +16,7 @@ Usage
 
         apply plugin: 'mobi.cangol.plugin.smbfile'
 
-        uploadSmbFile{
+        smbfile{
             url '替换为你的 smb共享主机地址' //如:\\192.168.1.1\
             domain '替换为你的 smb共享的域'
             username '替换为你的 smb共享的 username'
