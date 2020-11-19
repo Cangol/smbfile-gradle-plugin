@@ -1,0 +1,2 @@
+include ':smbfile-gradle-plugin'
+include ':app'
