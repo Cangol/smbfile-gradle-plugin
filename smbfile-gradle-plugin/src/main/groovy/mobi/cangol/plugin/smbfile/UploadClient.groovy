@@ -30,15 +30,15 @@ class UploadClient {
         SmbFile dir=new SmbFile("smb:" + filePath.substring(0,filePath.lastIndexOf("/")),authentication)
         BufferedInputStream bin=null
         BufferedOutputStream out=null
-        log.error("dir="+dir.path)
-        log.error("destFile="+destFile.path)
+        log.warn("dir="+dir.path)
+        log.warn("destFile="+destFile.path)
         try{
             if (!dir.exists())
                 dir.mkdirs()
-//            if (destFile.exists())
-//                destFile.delete()
-//            else
-//                destFile.createNewFile()
+            if (destFile.exists())
+                destFile.delete()
+            else
+                destFile.createNewFile()
             bin = new BufferedInputStream(new FileInputStream(srcFile))
             out = new BufferedOutputStream(new SmbFileOutputStream(destFile))
             byte[] bytes = new byte[4096]
