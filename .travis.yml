@@ -32,4 +32,4 @@ before_install:
   - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
   - yes | sdkmanager "build-tools;platforms;android-30"
 script:
-  - ./gradlew check --no-daemon
+  - ./gradlew clean --no-daemon
